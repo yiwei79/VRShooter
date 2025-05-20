@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
-using Random = UnityEngine.Random;
 
-namespace XR.Interaction.Toolkit.Samples
+namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 {
     /// <summary>
     /// Behavior with an API for spawning objects from a given set of prefabs.
