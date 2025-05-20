@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: -8175944365485479075}
   - {fileID: 8339455231178082067}
   - {fileID: -1360232469857127578}
+<<<<<<< HEAD
   - {fileID: 5163753222931100123}
 --- !u!114 &5163753222931100123
 MonoBehaviour:
@@ -171,6 +172,8 @@ MonoBehaviour:
   chromaticAbberationIntensity:
     m_OverrideState: 1
     m_Value: 0.5
+=======
+>>>>>>> parent of cc3163c (XR starter pack)
 --- !u!114 &8339455231178082067
 MonoBehaviour:
   m_ObjectHideFlags: 3
