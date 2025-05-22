@@ -3,82 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class zombiemanager : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
-    public Camera frustum;
-    public LayerMask mask;
-    public Transform target;
+    public float viewRadius = 10f;
+    [Range(0, 360)]
+    public float viewAngle = 120f;
+    public Transform player;
+    public LayerMask targetMask;
+    public LayerMask obstacleMask;
 
-    public BlackBoard blackboard;
-    public float followSpeed = 5f;
-
-
+    private NavMeshAgent agent;
+    private bool playerInSight = false;
 
     void Start()
     {
-
-
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        if (target != null )
+        if (IsPlayerInView())
         {
-            GetComponent<NavMeshAgent>().SetDestination(target.position);
-
+            agent.SetDestination(player.position);
         }
-        else
-        {
-            DetectTarget();
-
-        }
-
     }
 
-
-
-   public void DetectTarget()
+    bool IsPlayerInView()
     {
+        Vector3 dirToPlayer = (player.position - transform.position).normalized;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, frustum.farClipPlane, mask);
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(frustum);
-
-        foreach (Collider col in colliders)
+        // Angle check
+        if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
         {
-            if (col.gameObject != gameObject && GeometryUtility.TestPlanesAABB(planes, col.bounds))
+            // Raycast to check for obstacles
+            if (!Physics.Raycast(transform.position, dirToPlayer, distanceToPlayer, obstacleMask))
             {
-                RaycastHit hit;
-                Ray ray = new Ray();
-                ray.origin = transform.position;
-                ray.direction = (col.transform.position - transform.position).normalized;
-                ray.origin = ray.GetPoint(frustum.nearClipPlane);
-
-                if (Physics.Raycast(ray, out hit, frustum.farClipPlane, mask))
-                    if (hit.collider.gameObject.CompareTag("Player"))
-                    {
-                        GetComponentInParent<BlackBoard>().Broadcast(hit.collider.gameObject.transform);
-                    }
-                
+                return true;
             }
         }
 
-        
-
+        return false;
     }
 
-   public void FollowTarget(Transform Target)
+    // Optional: Visualize FOV in editor
+    void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
 
-        target = Target;
+        Vector3 viewAngleA = DirFromAngle(-viewAngle / 2, false);
+        Vector3 viewAngleB = DirFromAngle(viewAngle / 2, false);
 
-        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + viewAngleA * viewRadius);
+        Gizmos.DrawLine(transform.position, transform.position + viewAngleB * viewRadius);
     }
-    
 
+    Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+            angleInDegrees += transform.eulerAngles.y;
 
-
-
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
 }
