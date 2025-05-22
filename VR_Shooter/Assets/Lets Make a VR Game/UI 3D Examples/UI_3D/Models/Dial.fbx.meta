@@ -111,3 +111,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 170222
+  packageName: XR Interaction ToolKit Starter Kit
+  packageVersion: 
+  assetPath: Assets/Lets Make a VR Game/UI 3D Examples/UI_3D/Models/Dial.fbx
+  uploadId: 0
