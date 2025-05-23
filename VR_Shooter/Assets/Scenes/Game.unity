@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   range: 100
-  fireRate: 0.5
+  fireRate: 10
   recoilForce: 5
   impactForce: 10
   muzzle: {fileID: 1455215768}
