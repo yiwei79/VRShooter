@@ -15,6 +15,11 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     private bool playerInSight = false;
 
+    private int health = 2;
+    public float attackRange = 1.5f;
+    public float attackCooldown = 1.5f;
+    private float lastAttackTime = 0f;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -24,19 +29,36 @@ public class EnemyAI : MonoBehaviour
     {
         if (IsPlayerInView())
         {
-            agent.SetDestination(player.position);
+            float distance = Vector3.Distance(transform.position, player.position);
+
+            if (distance > attackRange)
+            {
+                agent.SetDestination(player.position);
+            }
+            else
+            {
+                agent.ResetPath();
+                TryAttackPlayer();
+            }
         }
     }
 
+
+    public void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
     bool IsPlayerInView()
     {
         Vector3 dirToPlayer = (player.position - transform.position).normalized;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // Angle check
         if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
         {
-            // Raycast to check for obstacles
             if (!Physics.Raycast(transform.position, dirToPlayer, distanceToPlayer, obstacleMask))
             {
                 return true;
@@ -45,8 +67,25 @@ public class EnemyAI : MonoBehaviour
 
         return false;
     }
+    void TryAttackPlayer()
+    {
+        if (Time.time >= lastAttackTime + attackCooldown)
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(1);
+                Debug.Log("Zombie attacked the player!");
+                lastAttackTime = Time.time;
+            }
+        }
+    }
+    void Die()
+    {
+        Debug.Log("Zombie died!");
+        Destroy(gameObject);
+    }
 
-    // Optional: Visualize FOV in editor
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
