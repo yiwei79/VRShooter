@@ -845,10 +845,11 @@ MonoBehaviour:
   muzzleFlash: {fileID: 4232136753460235359}
   audioSource: {fileID: 0}
   fireSound: {fileID: 0}
-  impactEffect: {fileID: 1766604039668393149}
+  impactEffect: {fileID: 6696522056603760654, guid: d3b9f411100874096b0d8ff51adb9fdf, type: 3}
   maxAmmo: 12
   currentAmmo: 12
   reloadSound: {fileID: 0}
+  surfaceEffectManager: {fileID: 0}
 --- !u!1001 &1767599857282323719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,11 +971,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
---- !u!1 &1766604039668393149 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
-  m_PrefabInstance: {fileID: 1767599857282323719}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1767751970553036081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4388947112716342, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}

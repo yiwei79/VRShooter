@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfaceEffects:
   - tag: Enemies
-    particlePrefab: {fileID: 4067635555901098505, guid: 07cb77ed230434c9d8492315f0e3b46c, type: 3}
-  - tag: Metal
-    particlePrefab: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347, type: 3}
+    particlePrefab: {fileID: 5388399866970146284, guid: 19a5e07ebc1c047bba71726bd01ad6e6, type: 3}
+  - tag: Explosive
+    particlePrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   - tag: Soft
-    particlePrefab: {fileID: 173568205469411088, guid: 8dc969edc80f84768bfbe4e2f6af5b89, type: 3}
+    particlePrefab: {fileID: 1327920033879557428, guid: a057b4adc20ae4276b7aa4adcde0c38d, type: 3}
