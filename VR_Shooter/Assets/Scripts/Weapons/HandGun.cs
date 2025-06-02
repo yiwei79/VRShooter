@@ -171,9 +171,12 @@ public class HandGun : MonoBehaviour
     {
         // Simple logging for debugging - no enemy dependencies
         // Debug.Log($"Hit: {hit.transform.name} at {hit.point}"); // Commented out to prevent TLS allocator errors
-        
-        // TODO: Enemy damage system will be implemented later
-        // This keeps the weapon functional without complex dependencies
+
+        EnemyAI enemy = hit.collider.GetComponent<EnemyAI>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(1); // Deal 1 point of damage per shot
+        }
     }
     
     void SpawnImpactEffect(RaycastHit hit)
