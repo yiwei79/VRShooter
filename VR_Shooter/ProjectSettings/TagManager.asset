@@ -11,6 +11,8 @@ TagManager:
   - TunnelOutside
   - TunnelInside
   - Enemies
+  - Explosive
+  - Soft
   layers:
   - Default
   - TransparentFX

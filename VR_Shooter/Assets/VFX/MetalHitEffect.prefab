@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.3880999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.11, y: 2.11, z: 2.11}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5592166649524348747}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -9652,14 +9652,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6696522056603760654}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 0.4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -9727,7 +9727,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10587,7 +10587,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -12836,7 +12836,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   SizeBySpeedModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -13438,13 +13438,23 @@ ParticleSystem:
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 3188758667726505203}
-      type: 0
+      type: 3
       properties: 4
       emitProbability: 1
     - serializedVersion: 3
       emitter: {fileID: 8790987674846703181}
       type: 0
       properties: 0
+      emitProbability: 1
+    - serializedVersion: 3
+      emitter: {fileID: 390408906154215820}
+      type: 0
+      properties: 4
+      emitProbability: 1
+    - serializedVersion: 3
+      emitter: {fileID: 8790987674846703181}
+      type: 0
+      properties: 4
       emitProbability: 1
     - serializedVersion: 3
       emitter: {fileID: 390408906154215820}
@@ -14494,8 +14504,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.92, y: 1.92, z: 1.92}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5592166649524348747}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
