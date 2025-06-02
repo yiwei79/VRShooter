@@ -23,6 +23,9 @@ public class HandGun : MonoBehaviour
     public int currentAmmo;
     public AudioClip reloadSound;
     
+    [Header("Surface Effects")]
+    public SurfaceEffectManager surfaceEffectManager;
+    
     private float nextFireTime = 0f;
     private XRGrabInteractable grabInteractable;
     private Rigidbody weaponRigidbody;
@@ -175,10 +178,19 @@ public class HandGun : MonoBehaviour
     
     void SpawnImpactEffect(RaycastHit hit)
     {
-        if (impactEffect != null)
+        GameObject effectPrefab = null;
+        if (surfaceEffectManager != null)
         {
-            GameObject effect = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(effect, 2f); // Clean up after 2 seconds
+            effectPrefab = surfaceEffectManager.GetEffectForTag(hit.collider.tag);
+        }
+        if (effectPrefab == null)
+        {
+            effectPrefab = impactEffect;
+        }
+        if (effectPrefab != null)
+        {
+            GameObject effect = Instantiate(effectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(effect, 2f);
         }
     }
     
