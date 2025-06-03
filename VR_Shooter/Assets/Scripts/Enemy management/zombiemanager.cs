@@ -99,8 +99,16 @@ public class EnemyAI : MonoBehaviour
     }
     void Die()
     {
+        animator.SetTrigger("Die");
+
         Debug.Log("Zombie died!");
-        Destroy(gameObject);
+
+        agent.ResetPath();         
+        agent.enabled = false;     
+
+        this.enabled = false;
+
+        Destroy(gameObject, 3f);
     }
 
     void OnDrawGizmosSelected()
