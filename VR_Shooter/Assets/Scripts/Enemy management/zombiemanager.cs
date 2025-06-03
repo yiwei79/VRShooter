@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
 
     private NavMeshAgent agent;
     private bool playerInSight = false;
+    [SerializeField] private Animator animator;
 
     private int health = 2;
     public float attackRange = 1.5f;
@@ -33,13 +34,27 @@ public class EnemyAI : MonoBehaviour
 
             if (distance > attackRange)
             {
+                animator.SetBool("AttackRange", false);
+                // Walking towards player
                 agent.SetDestination(player.position);
+
+                animator.SetBool("IsWalking", true);
+                // Optional: cancel attack state if you use a bool instead of trigger
             }
             else
             {
+                // In attack range
                 agent.ResetPath();
+                animator.SetBool("IsWalking", false);
                 TryAttackPlayer();
             }
+        }
+        else
+        {
+            // Idle when player not in view
+            agent.ResetPath();
+            animator.SetBool("AttackRange", false);
+            animator.SetBool("IsWalking", false);
         }
     }
 
@@ -61,6 +76,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (!Physics.Raycast(transform.position, dirToPlayer, distanceToPlayer, obstacleMask))
             {
+                Debug.Log("Zombie following player!");
                 return true;
             }
         }
@@ -77,6 +93,7 @@ public class EnemyAI : MonoBehaviour
                 playerHealth.TakeDamage(1);
                 Debug.Log("Zombie attacked the player!");
                 lastAttackTime = Time.time;
+                animator.SetBool("AttackRange", true);
             }
         }
     }
