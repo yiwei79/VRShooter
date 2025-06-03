@@ -1234,9 +1234,11 @@ GameObject:
   - component: {fileID: 8246910652023803555}
   - component: {fileID: 5149351783823242820}
   - component: {fileID: 6887549982102767088}
+  - component: {fileID: 5583912581821010160}
+  - component: {fileID: 1313977717337815887}
   m_Layer: 0
   m_Name: Sci Fi Pistol
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1439,6 +1441,66 @@ MonoBehaviour:
   currentAmmo: 12
   reloadSound: {fileID: 0}
   surfaceEffectManager: {fileID: 0}
+--- !u!114 &5583912581821010160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036311395883757064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2680a7d5e40370488f1a5b4bc226702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: f5ccd52dc494e054fbe7d7161dcabe25, type: 2}
+--- !u!114 &1313977717337815887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036311395883757064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51478d8f7e4167e40bacf38e835bb639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Evaluators:
+  - rid: 4396067472140927337
+  references:
+    version: 2
+    RefIds:
+    - rid: 4396067472140927337
+      type: {class: XRDistanceEvaluator, ns: UnityEngine.XR.Interaction.Toolkit.Filtering, asm: Unity.XR.Interaction.Toolkit}
+      data:
+        m_Filter: {fileID: 1313977717337815887}
+        m_Enabled: 1
+        m_Weight:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0.5
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 2
+            outSlope: 2
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_MaxDistance: 1
 --- !u!1001 &1767599857282323719
 PrefabInstance:
   m_ObjectHideFlags: 0
