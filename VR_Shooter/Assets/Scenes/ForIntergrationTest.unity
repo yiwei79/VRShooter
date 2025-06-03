@@ -14165,7 +14165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &563190365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14262,8 +14262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdf385443c384846a842e4f02f4e701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBarImage: {fileID: 0}
-  playerHealth: {fileID: 0}
+  hpBarImage: {fileID: 1628370315}
+  playerHealth: {fileID: 1778165819}
 --- !u!1 &565694495
 GameObject:
   m_ObjectHideFlags: 0
@@ -44635,6 +44635,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1778165819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279941704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075eb49accd134d4995afc238c9ba00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  healDelay: 3
 --- !u!1 &1783572213
 GameObject:
   m_ObjectHideFlags: 0
@@ -109887,6 +109902,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8754291196173672620, guid: 34fa262bb5165c8418db004e732c7c90, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1778165818}
+    - targetCorrespondingSourceObject: {fileID: 8754291196173672620, guid: 34fa262bb5165c8418db004e732c7c90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1778165819}
   m_SourcePrefab: {fileID: 100100000, guid: 34fa262bb5165c8418db004e732c7c90, type: 3}
 --- !u!1 &8160557467577539529 stripped
 GameObject:
