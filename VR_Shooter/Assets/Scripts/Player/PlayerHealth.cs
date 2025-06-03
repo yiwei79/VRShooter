@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
@@ -42,19 +43,21 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator HealPlayer()
     {
         isHealing = true;
-        Debug.Log("Healing started...");
-
-        yield return new WaitForSeconds(0.1f); // Optional short delay
-
+        yield return new WaitForSeconds(0.1f);
         currentHealth = maxHealth;
         Debug.Log("Player healed to full!");
-
         isHealing = false;
     }
 
     void Die()
     {
         Debug.Log("Player died!");
-        gameObject.SetActive(false);
+        StartCoroutine(LoadGameSceneAfterDelay());
+    }
+
+    IEnumerator LoadGameSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Game");
     }
 }
