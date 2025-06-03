@@ -1,18 +1,36 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 5;
     public int currentHealth;
 
+    public float healDelay = 3f;
+    private float lastDamageTime;
+    private bool isHealing = false;
+
     void Start()
     {
         currentHealth = maxHealth;
     }
 
+    void Update()
+    {
+        if (currentHealth < maxHealth && !isHealing && Time.time - lastDamageTime >= healDelay)
+        {
+            StartCoroutine(HealPlayer());
+        }
+    }
+
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        lastDamageTime = Time.time;
+        isHealing = false;
+
         Debug.Log("Player took damage. Health: " + currentHealth);
 
         if (currentHealth <= 0)
@@ -21,9 +39,22 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    IEnumerator HealPlayer()
+    {
+        isHealing = true;
+        Debug.Log("Healing started...");
+
+        yield return new WaitForSeconds(0.1f); // Optional short delay
+
+        currentHealth = maxHealth;
+        Debug.Log("Player healed to full!");
+
+        isHealing = false;
+    }
+
     void Die()
     {
         Debug.Log("Player died!");
-        gameObject.SetActive(false); 
+        gameObject.SetActive(false);
     }
 }
