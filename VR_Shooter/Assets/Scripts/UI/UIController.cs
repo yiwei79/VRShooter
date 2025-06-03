@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
+using UnityEngine.XR;
 
 public class UIController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameObject panel;
 public void GoToMainMenu()
     {
         // Load the main menu scene
@@ -20,4 +23,6 @@ public void GoToMainMenu()
         // Quit the application
         Application.Quit();
     }
+
+
 }
