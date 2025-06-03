@@ -21,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     public float attackCooldown = 1.5f;
     private float lastAttackTime = 0f;
 
+    private bool hasDetectedPlayer = false;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -28,22 +30,23 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (IsPlayerInView())
+        if (!hasDetectedPlayer && IsPlayerInView())
+        {
+            hasDetectedPlayer = true;  // Lock into chase mode
+        }
+
+        if (hasDetectedPlayer)
         {
             float distance = Vector3.Distance(transform.position, player.position);
 
             if (distance > attackRange)
             {
                 animator.SetBool("AttackRange", false);
-                // Walking towards player
                 agent.SetDestination(player.position);
-
                 animator.SetBool("IsWalking", true);
-                // Optional: cancel attack state if you use a bool instead of trigger
             }
             else
             {
-                // In attack range
                 agent.ResetPath();
                 animator.SetBool("IsWalking", false);
                 TryAttackPlayer();
@@ -51,7 +54,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            // Idle when player not in view
+            // Idle behavior if player hasn't been detected yet
             agent.ResetPath();
             animator.SetBool("AttackRange", false);
             animator.SetBool("IsWalking", false);
@@ -69,19 +72,8 @@ public class EnemyAI : MonoBehaviour
     }
     bool IsPlayerInView()
     {
-        Vector3 dirToPlayer = (player.position - transform.position).normalized;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
-        {
-            if (!Physics.Raycast(transform.position, dirToPlayer, distanceToPlayer, obstacleMask))
-            {
-                Debug.Log("Zombie following player!");
-                return true;
-            }
-        }
-
-        return false;
+        return distanceToPlayer <= viewRadius;
     }
     void TryAttackPlayer()
     {
