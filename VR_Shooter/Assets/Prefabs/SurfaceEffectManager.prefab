@@ -48,6 +48,8 @@ MonoBehaviour:
   - tag: Enemies
     particlePrefab: {fileID: 5388399866970146284, guid: 19a5e07ebc1c047bba71726bd01ad6e6, type: 3}
   - tag: Explosive
-    particlePrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+    particlePrefab: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
   - tag: Soft
     particlePrefab: {fileID: 1327920033879557428, guid: a057b4adc20ae4276b7aa4adcde0c38d, type: 3}
+  - tag: Final
+    particlePrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
