@@ -29971,6 +29971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 840124514876005507, guid: 2a3b1b59118191d449fac0fd6a1949e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4060883456380782879, guid: 2a3b1b59118191d449fac0fd6a1949e9, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -53657,6 +53661,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25089455, y: 2.9031854, z: 5.68}
   m_Center: {x: -0.37455273, y: 0.07133263, z: -0.12160134}
+--- !u!1 &2089409999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 840124514876005507, guid: 2a3b1b59118191d449fac0fd6a1949e9, type: 3}
+  m_PrefabInstance: {fileID: 1224991384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2091727433
 GameObject:
   m_ObjectHideFlags: 0
@@ -94247,6 +94256,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1671621429421565714, guid: 889f02495e07044c3aeda95dfefd65ba, type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 2089409999}
     - target: {fileID: 7084306254511410170, guid: 889f02495e07044c3aeda95dfefd65ba, type: 3}
       propertyPath: m_Name
       value: SurfaceEffectManager
