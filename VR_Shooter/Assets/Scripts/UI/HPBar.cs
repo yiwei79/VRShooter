@@ -13,6 +13,7 @@ public class HPBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hpBarImage.fillAmount = playerHealth.currentHealth / playerHealth.maxHealth;
+        float fillAmount = (float)playerHealth.currentHealth / (float)playerHealth.maxHealth;
+        hpBarImage.fillAmount = fillAmount;
     }
 }
